@@ -8,3 +8,14 @@ export type AuthStackParamList = {
     Auth: undefined;
     SelectLanguage: undefined;
 };
+
+export type FormInput = {
+    value: string;
+    isValid: boolean;
+    error: string;
+};
+
+export type LoginForm = {
+    login: FormInput;
+    password: FormInput;
+};
