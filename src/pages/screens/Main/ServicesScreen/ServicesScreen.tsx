@@ -3,8 +3,8 @@ import { View, StyleSheet, FlatList } from 'react-native';
 
 import { COLORS, SIZES } from '@constants/theme';
 import ServiceItem from '@screens/Main/ServicesScreen/ServiceItem/ServiceItem';
-import useCompanies from '@hooks/useCompanies';
-import useServices from '@hooks/useServices';
+import useCompanyService from '@core/services/useCompanyService';
+import useServiceService from '@core/services/useServiceService';
 
 const optionsData = [
     {
@@ -52,17 +52,17 @@ const optionsData = [
 export default function ServicesScreen(): ReactElement {
     const [state, setState] = useState<any>([]);
 
-    const { getServicesByUser } = useServices();
-    const { getCompanies } = useCompanies();
+    const { getServicesByUser } = useServiceService();
+    const { getCompanies } = useCompanyService();
 
     useEffect(() => {
         async function getData(): Promise<void> {
-            const w = await getCompanies();
-            console.log(w.data);
-            const data = await getServicesByUser(w.data[0].id);
-            console.log('data');
-            console.log(data);
-            console.log('data');
+            // const w = await getCompanies();
+            // console.log(w.data);
+            // const data = await getServicesByUser(w.data);
+            // console.log('data');
+            // console.log(data);
+            // console.log('data');
         }
         getData();
     }, []);

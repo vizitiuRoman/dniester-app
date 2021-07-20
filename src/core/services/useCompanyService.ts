@@ -1,14 +1,16 @@
-import axios from 'axios';
+import httpClient from '@http/httpClient';
 
-type UseService = {
+import { APIS } from '@constants/apis';
+
+type Service = {
     getCompanies: () => Promise<any>;
 };
 
-export default function useCompanies(): UseService {
+export default function useCompanyService(): Service {
     async function getCompanies(): Promise<any> {
         try {
             return (
-              await axios.get<any>('https://f2859688e0ad.ngrok.io/users')
+              await httpClient.get<any>(APIS.company)
             ).data;
         } catch (e) {
         }
