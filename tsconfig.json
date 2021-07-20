@@ -21,46 +21,46 @@
                 "src/environments/*"
             ],
             "@core/*": [
-                "src/core/*"
+                "src/app/core/*"
             ],
             "@grpc/*": [
-                "src/grpc/*"
+                "src/app/grpc/*"
             ],
             "@hoc/*": [
-                "src/core/hoc/*"
+                "src/app/core/hoc/*"
             ],
             "@http/*": [
-                "src/core/http/*"
+                "src/app/core/http/*"
             ],
             "@store/*": [
-                "src/store/*"
+                "src/app/store/*"
             ],
             "@hooks/*": [
-                "src/core/hooks/*"
+                "src/app/core/hooks/*"
             ],
             "@contexts/*": [
-                "src/core/contexts/*"
+                "src/app/core/contexts/*"
             ],
             "@navigations/*": [
-                "src/pages/navigation/*"
+                "src/app/pages/navigation/*"
             ],
             "@screens/*": [
-                "src/pages/screens/*"
+                "src/app/pages/screens/*"
             ],
             "@shared/*": [
-                "src/shared/*"
+                "src/app/shared/*"
             ],
             "@components/*": [
-                "src/shared/components/*"
+                "src/app/shared/components/*"
             ],
             "@shared-types/*": [
-                "src/shared/types/*"
+                "src/app/shared/types/*"
             ],
             "@theme/*": [
-                "src/shared/theme/*"
+                "src/app/shared/theme/*"
             ],
             "@constants/*": [
-                "src/shared/constants/*"
+                "src/app/shared/constants/*"
             ]
         }
     },
@@ -70,6 +70,6 @@
         "metro.config.js",
         "coverage-ts",
         "__tests__",
-        "src/grpc/grpc-proto"
+        "src/app/grpc/grpc-proto"
     ]
 }
