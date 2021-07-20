@@ -1,3 +1,5 @@
+import { User } from '@shared/models/user';
+
 export type RootStackParamList = {
     Notifications: undefined;
     Services: undefined;
@@ -18,4 +20,9 @@ export type FormInput = {
 export type LoginForm = {
     login: FormInput;
     password: FormInput;
+};
+
+export type AuthData = {
+    token: string;
+    user: User;
 };
