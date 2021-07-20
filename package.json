@@ -15,7 +15,11 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/blur": "^3.6.0",
+    "@react-native-community/clipboard": "^1.5.1",
+    "@react-native-community/datetimepicker": "^3.5.2",
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-community/netinfo": "^6.0.0",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.4",
     "axios": "^0.21.1",
@@ -25,9 +29,11 @@
     "react-i18next": "^11.8.14",
     "react-native": "0.64.0",
     "react-native-gesture-handler": "^1.10.3",
-    "react-native-reanimated": "^2.1.0",
+    "react-native-modal-datetime-picker": "^10.2.0",
+    "react-native-reanimated": "^2.2.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.1.1",
+    "react-native-ui-lib": "^5.27.0",
     "rxjs": "^6.6.7"
   },
   "devDependencies": {
