@@ -1,6 +1,6 @@
 import httpClient from '@http/httpClient';
 
-import { APIS } from '@constants/apis';
+import { SERVICE_API } from '@constants/apis';
 
 type Service = {
     getServicesByUser: (id: number) => Promise<any>;
@@ -9,7 +9,7 @@ type Service = {
 export default function useServiceService(): Service {
     async function getServicesByUser(id: number): Promise<any> {
         try {
-            return (await httpClient.get<any>(APIS.service)).data;
+            return (await httpClient.get<any>(SERVICE_API.default)).data;
         } catch (e) {}
     }
 

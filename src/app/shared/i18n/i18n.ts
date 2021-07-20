@@ -23,4 +23,14 @@ i18n.use(initReactI18next).init({
     resources,
 });
 
+export enum LanguageTypes {
+    RO = 'ro-RO',
+    RU = 'ru-RU',
+    EN = 'en-EN',
+}
+
+export const languages: LanguageTypes[] = Object.keys(
+    LanguageTypes
+) as LanguageTypes[];
+
 export default i18n;

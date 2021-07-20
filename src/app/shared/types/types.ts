@@ -2,12 +2,22 @@ import { User } from '@shared/models/user';
 
 export type RootStackParamList = {
     Notifications: undefined;
+    Settings: undefined;
     Services: undefined;
 };
 
 export type AuthStackParamList = {
     Welcome: undefined;
     Auth: undefined;
+    SelectLanguage: undefined;
+};
+
+export type SettingsStackParamList = {
+    Settings: undefined;
+    SelectLanguage: undefined;
+};
+
+export type SettingsParamList = {
     SelectLanguage: undefined;
 };
 

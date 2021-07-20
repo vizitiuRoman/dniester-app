@@ -121,7 +121,7 @@ export default function AuthScreen(): ReactElement {
             >
                 <View flex width={'100%'} paddingH-16>
                     <View marginV-48 center>
-                        <Image source={require('assets/logo_top.png')} />
+                        <Image source={require('assets/logo.png')} />
                     </View>
 
                     <View marginB-16>
