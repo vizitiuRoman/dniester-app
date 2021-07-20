@@ -1,10 +1,14 @@
 import React, { ReactElement } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+    createStackNavigator,
+    TransitionPresets,
+} from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '@shared/types/types';
 import NotificationsScreen from '@screens/Main/NotificationsScreen/NotificationsScreen';
 import ServicesScreen from '@screens/Main/ServicesScreen/ServicesScreen';
+import SettingsNavigator from '@navigations/SettingsNavigator';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -42,6 +46,15 @@ export default function RootNavigator(): ReactElement {
                 component={NotificationsScreen}
                 options={{
                     headerTitle: t('Notifications'),
+                }}
+            />
+            <Stack.Screen
+                name="Settings"
+                component={SettingsNavigator}
+                options={{
+                    headerShown: false,
+                    headerTitle: '',
+                    ...TransitionPresets.ModalPresentationIOS,
                 }}
             />
         </Stack.Navigator>

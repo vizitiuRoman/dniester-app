@@ -2,14 +2,30 @@ export default {
     prefixes: ['https://olimpbooking.com', 'olimpbooking://'],
     config: {
         screens: {
-            Notifications: {
-                screens: {
-                    NotificationsScreen: 'notification',
+            Root: {
+                Notifications: {
+                    screens: {
+                        NotificationsScreen: 'notification',
+                    },
                 },
-            },
-            Services: {
-                screens: {
-                    ServicesScreen: 'services',
+                Services: {
+                    screens: {
+                        ServicesScreen: 'services',
+                    },
+                },
+                Settings: {
+                    screens: {
+                        Settings: {
+                            screens: {
+                                SettingsScreen: 'settings',
+                            },
+                        },
+                        SelectLanguage: {
+                            screens: {
+                                SelectLanguageScreen: 'select language',
+                            },
+                        },
+                    },
                 },
             },
             Auth: {
