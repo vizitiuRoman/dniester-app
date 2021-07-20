@@ -29,6 +29,9 @@
             "@hoc/*": [
                 "src/core/hoc/*"
             ],
+            "@http/*": [
+                "src/core/http/*"
+            ],
             "@store/*": [
                 "src/store/*"
             ],

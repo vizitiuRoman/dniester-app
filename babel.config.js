@@ -22,6 +22,7 @@ module.exports = {
                     '@core': './src/core',
                     '@hoc': './src/core/hoc',
                     '@hooks': './src/core/hooks',
+                    '@http': './src/core/http',
                     '@contexts': './src/core/contexts',
                     '@navigations': './src/pages/navigation',
                     '@screens': './src/pages/screens',
