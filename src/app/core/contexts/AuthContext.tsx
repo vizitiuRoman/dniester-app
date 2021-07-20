@@ -8,6 +8,10 @@ import React, {
 import AsyncStorage from '@react-native-community/async-storage';
 
 import { User } from '@shared/models/user';
+import { AuthData } from '@shared/types/types';
+import { APIS } from '@constants/apis';
+import { TOKEN_KEY } from '@constants/constants';
+import httpClient from '@http/httpClient';
 
 type AuthContextValue = {
     signed: boolean;
@@ -48,8 +52,25 @@ export function AuthProvider({
         loadStorageData();
     }, []);
 
-    async function login(login: string, password: string): Promise<void> {
+    async function setAuthData(authData: AuthData): Promise<void> {
         try {
+            await AsyncStorage.setItem(TOKEN_KEY, authData.token);
+            setUser(authData.user);
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    async function login(userLogin: string, password: string): Promise<void> {
+        try {
+            const authData = await httpClient.post<AuthData>(
+                `${APIS.auth}/login`,
+                {
+                    userLogin,
+                    password,
+                }
+            );
+            await setAuthData(authData.data);
         } catch (e) {}
     }
 
