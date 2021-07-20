@@ -7,18 +7,18 @@ import React, {
 } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { User } from '../../grpc/grpc-proto/user/user_pb';
+import { User } from '@shared/models/user';
 
 type AuthContextValue = {
     signed: boolean;
     loading: boolean;
-    user: User.AsObject;
+    user: User;
     login: (login: string, password: string) => Promise<void>;
     logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContextValue>({
-    async login(login: string, password: string): Promise<void> {
+    async login(): Promise<void> {
         throw new Error('Unimplemented');
     },
     logout(): void {
@@ -26,13 +26,13 @@ export const AuthContext = createContext<AuthContextValue>({
     },
     signed: false,
     loading: false,
-    user: {} as User.AsObject,
+    user: {} as User,
 });
 
 export function AuthProvider({
     children,
 }: JSX.ElementChildrenAttribute): ReactElement {
-    const [user, setUser] = useState<User.AsObject | null>(null);
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -62,7 +62,7 @@ export function AuthProvider({
             signed: !!user,
             login,
             logout,
-            user: user as User.AsObject,
+            user: user as User,
         };
     }, [user]);
 
