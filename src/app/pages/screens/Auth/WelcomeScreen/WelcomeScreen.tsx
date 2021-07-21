@@ -58,7 +58,7 @@ export default function WelcomeScreen({
                             bg-primaryColor
                             text10
                             style={{ height: 56, marginTop: 8 }}
-                            onPress={() => navigation.navigate('Auth')}
+                            onPress={() => navigation.navigate('Login')}
                         />
                     </View>
                 </View>
