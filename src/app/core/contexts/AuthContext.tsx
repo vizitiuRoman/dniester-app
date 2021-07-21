@@ -11,18 +11,23 @@ import { User } from '@shared/models/user';
 import { AuthData } from '@shared/types/types';
 import { TOKEN_KEY } from '@constants/storage-keys';
 import { AUTH_API } from '@constants/apis';
+import { AuthPayload, RegisterPayload } from '@shared/types/auth';
 import httpClient from '@http/httpClient';
 
 type AuthContextValue = {
     signed: boolean;
     loading: boolean;
     user: User;
-    login: (login: string, password: string) => Promise<void>;
+    login: (data: AuthPayload) => Promise<void>;
+    register: (data: RegisterPayload) => Promise<void>;
     logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContextValue>({
     async login(): Promise<void> {
+        throw new Error('Unimplemented');
+    },
+    async register(): Promise<void> {
         throw new Error('Unimplemented');
     },
     logout(): void {
@@ -54,25 +59,35 @@ export function AuthProvider({
 
     async function setAuthData(authData: AuthData): Promise<void> {
         try {
-            await AsyncStorage.setItem(TOKEN_KEY, authData.token);
+            await AsyncStorage.setItem(TOKEN_KEY, authData.token.accessToken);
             setUser(authData.user);
         } catch (err) {
             throw err;
         }
     }
 
-    async function login(userLogin: string, password: string): Promise<void> {
+    async function login(data: AuthPayload): Promise<void> {
         try {
-            const authData = await httpClient.post<AuthData>(AUTH_API.login, {
-                userLogin,
-                password,
-            });
+            const authData = await httpClient.post<AuthData>(
+                AUTH_API.login,
+                data
+            );
+            await setAuthData(authData.data);
+        } catch (e) {}
+    }
+
+    async function register(data: RegisterPayload): Promise<void> {
+        try {
+            const authData = await httpClient.post<AuthData>(
+                AUTH_API.register,
+                data
+            );
             await setAuthData(authData.data);
         } catch (e) {}
     }
 
     function logout(): void {
-        AsyncStorage.multiRemove([]).then(() => setUser(null));
+        AsyncStorage.multiRemove([TOKEN_KEY]).then(() => setUser(null));
     }
 
     const value = useMemo((): Omit<AuthContextValue, 'loading'> => {
@@ -80,6 +95,7 @@ export function AuthProvider({
             signed: !!user,
             login,
             logout,
+            register,
             user: user as User,
         };
     }, [user]);
