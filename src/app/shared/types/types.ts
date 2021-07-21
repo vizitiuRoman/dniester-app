@@ -8,7 +8,8 @@ export type RootStackParamList = {
 
 export type AuthStackParamList = {
     Welcome: undefined;
-    Auth: undefined;
+    Login: undefined;
+    Register: undefined;
     SelectLanguage: undefined;
 };
 
@@ -28,11 +29,20 @@ export type FormInput = {
 };
 
 export type LoginForm = {
-    login: FormInput;
+    email: FormInput;
+    password: FormInput;
+};
+
+export type RegisterForm = {
+    name: FormInput;
+    lastName: FormInput;
+    email: FormInput;
     password: FormInput;
 };
 
 export type AuthData = {
-    token: string;
+    token: {
+        accessToken: string;
+    };
     user: User;
 };
