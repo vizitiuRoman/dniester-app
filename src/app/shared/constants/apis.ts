@@ -1,7 +1,7 @@
 export const AUTH_API = {
-    login: 'user/login',
-    register: 'user/register',
-    me: 'user/me',
+    login: 'auth/user/login',
+    register: 'auth/user/register',
+    me: 'auth/user/me',
 };
 
 export const BOOKING_API = {
