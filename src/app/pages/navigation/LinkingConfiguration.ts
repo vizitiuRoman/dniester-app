@@ -1,5 +1,5 @@
 export default {
-    prefixes: ['https://olimpbooking.com', 'olimpbooking://'],
+    prefixes: ['https://dniester.com', 'dniester://'],
     config: {
         screens: {
             Root: {
@@ -33,6 +33,16 @@ export default {
                     Welcome: {
                         screens: {
                             WelcomeScreen: 'welcome',
+                        },
+                    },
+                    LoginScreen: {
+                        screens: {
+                            WelcomeScreen: 'login screen',
+                        },
+                    },
+                    RegisterScreen: {
+                        screens: {
+                            WelcomeScreen: 'register screen',
                         },
                     },
                 },

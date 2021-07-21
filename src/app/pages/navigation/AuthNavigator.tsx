@@ -2,9 +2,10 @@ import React, { ReactElement } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { AuthStackParamList } from '@shared/types/types';
-import AuthScreen from '@screens/Auth/AuthScreen/AuthScreen';
+import LoginScreen from '@screens/Auth/LoginScreen/LoginScreen';
 import WelcomeScreen from '@screens/Auth/WelcomeScreen/WelcomeScreen';
 import SelectLanguageScreen from '@screens/SelectLanguageScreen/SelectLanguageScreen';
+import RegisterScreen from '@screens/Auth/RegisterScreen/RegisterScreen';
 
 const AuthStack = createStackNavigator<AuthStackParamList>();
 
@@ -32,8 +33,16 @@ export default function AuthNavigator(): ReactElement {
                 }}
             />
             <AuthStack.Screen
-                name="Auth"
-                component={AuthScreen}
+                name="Login"
+                component={LoginScreen}
+                options={{
+                    headerShown: true,
+                    headerTitle: '',
+                }}
+            />
+            <AuthStack.Screen
+                name="Register"
+                component={RegisterScreen}
                 options={{
                     headerShown: true,
                     headerTitle: '',
