@@ -1,5 +1,5 @@
 export const environment: {
     API_URL: string;
 } = {
-    API_URL: 'https://75a20082f28c.ngrok.io',
+    API_URL: 'https://331791d0cb5f.ngrok.io',
 };

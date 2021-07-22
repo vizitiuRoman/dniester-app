@@ -50,19 +50,11 @@ const optionsData = [
 ];
 
 export default function ServicesScreen(): ReactElement {
-    const [state, setState] = useState<any>([]);
-
-    const { getServicesByUser } = useServiceService();
-    const { getCompanies } = useCompanyService();
+    const { getServices } = useServiceService();
 
     useEffect(() => {
         async function getData(): Promise<void> {
-            // const w = await getCompanies();
-            // console.log(w.data);
-            // const data = await getServicesByUser(w.data);
-            // console.log('data');
-            // console.log(data);
-            // console.log('data');
+            const data = await getServices();
         }
         getData();
     }, []);

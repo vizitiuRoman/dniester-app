@@ -12,6 +12,7 @@ import { AuthData } from '@shared/types/types';
 import { TOKEN_KEY } from '@constants/storage-keys';
 import { AUTH_API } from '@constants/apis';
 import { AuthPayload, RegisterPayload } from '@shared/types/auth';
+import { getAuthHeaders } from '@shared/utils/utils';
 import httpClient from '@http/httpClient';
 
 type AuthContextValue = {
@@ -47,6 +48,16 @@ export function AuthProvider({
     useEffect(() => {
         async function loadStorageData(): Promise<void> {
             try {
+                setLoading(true);
+                const token = await AsyncStorage.getItem(TOKEN_KEY);
+                if (!token) {
+                    logout();
+                    return;
+                }
+                const dtrUser = await httpClient.get<User>(AUTH_API.me, {
+                    headers: await getAuthHeaders(),
+                });
+                setUser(dtrUser.data);
             } catch (e) {
                 logout();
             } finally {
