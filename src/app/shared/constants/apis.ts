@@ -1,7 +1,7 @@
 export const AUTH_API = {
-    login: 'auth/user/login',
-    register: 'auth/user/register',
-    me: 'auth/user/me',
+    login: 'user/auth/login',
+    register: 'user/auth/register',
+    me: 'user/auth/me',
 };
 
 export const BOOKING_API = {
@@ -11,7 +11,6 @@ export const BOOKING_API = {
 export const SERVICE_API = {
     default: 'services',
 };
-
 
 export const COMPANY_API = {
     default: 'companies',
