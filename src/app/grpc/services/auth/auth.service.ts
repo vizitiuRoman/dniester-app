@@ -4,19 +4,26 @@ import { Metadata } from 'grpc-web';
 
 import { grpcJwtMetadata } from '@grpc/helpers/grpc-metadata';
 import { grpcUnary } from '@grpc/helpers/grpc-unary';
-import { AuthReq, AuthRes, RegisterReq, Stub, UpdateAuthReq, UpdateAuthRes } from '@grpc/grpc-proto/auth/auth_pb';
+import {
+    AuthReq,
+    AuthRes,
+    RegisterReq,
+    Stub,
+    UpdateAuthReq,
+    UpdateAuthRes,
+} from '@grpc/grpc-proto/auth/auth_pb';
 
 type AuthService = {
-    auth(data: AuthReq.AsObject): Observable<AuthRes.AsObject>
-    register(data: AuthReq.AsObject): Observable<AuthRes.AsObject>
+    auth(data: AuthReq.AsObject): Observable<AuthRes.AsObject>;
+    register(data: AuthReq.AsObject): Observable<AuthRes.AsObject>;
     updateAuth(
-        data: UpdateAuthReq.AsObject,
-    ): Observable<UpdateAuthRes.AsObject>
-    logout(): Observable<void>
-}
+        data: UpdateAuthReq.AsObject
+    ): Observable<UpdateAuthRes.AsObject>;
+    logout(): Observable<void>;
+};
 
 export default function AuthGrpcService(
-    client: AuthServicePromiseClient,
+    client: AuthServicePromiseClient
 ): AuthService {
     function auth(data: AuthReq.AsObject): Observable<AuthRes.AsObject> {
         const req = new AuthReq();
@@ -37,7 +44,7 @@ export default function AuthGrpcService(
     }
 
     function updateAuth(
-        data: UpdateAuthReq.AsObject,
+        data: UpdateAuthReq.AsObject
     ): Observable<UpdateAuthRes.AsObject> {
         const req = new UpdateAuthReq();
         const meta: Metadata = grpcJwtMetadata();

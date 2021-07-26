@@ -12,8 +12,7 @@ export default function ServiceItem({ label }: ServiceItemProps): ReactElement {
     return (
         <View style={styles.container}>
             <View style={styles.innerContainer}>
-                <View style={styles.iconContainer}>
-                </View>
+                <View style={styles.iconContainer}></View>
             </View>
             <Text style={styles.label}>{label}</Text>
         </View>

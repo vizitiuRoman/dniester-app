@@ -1,4 +1,4 @@
-import { User } from '@shared/models/user';
+import { UserModel } from '@shared/models/user.model';
 
 export type RootStackParamList = {
     Notifications: undefined;
@@ -44,5 +44,5 @@ export type AuthData = {
     token: {
         accessToken: string;
     };
-    user: User;
+    user: UserModel;
 };

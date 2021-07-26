@@ -25,8 +25,7 @@ export default function useTheme(): UseTheme {
 
     async function loadTheme(): Promise<void> {
         // @ts-ignore
-        const theme = (await import('@theme/default.ts'))
-            .default as BrandTheme;
+        const theme = (await import('@theme/default.ts')).default as BrandTheme;
         setTheme(theme);
     }
 

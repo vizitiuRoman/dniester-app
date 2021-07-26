@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import { User } from '@shared/models/user';
+import { UserModel } from '@shared/models/user.model';
 import { AuthData } from '@shared/types/types';
 import { TOKEN_KEY } from '@constants/storage-keys';
 import { AUTH_API } from '@constants/apis';
@@ -18,7 +18,7 @@ import httpClient from '@http/httpClient';
 type AuthContextValue = {
     signed: boolean;
     loading: boolean;
-    user: User;
+    user: UserModel;
     login: (data: AuthPayload) => Promise<void>;
     register: (data: RegisterPayload) => Promise<void>;
     logout: () => void;
@@ -36,13 +36,13 @@ export const AuthContext = createContext<AuthContextValue>({
     },
     signed: false,
     loading: false,
-    user: {} as User,
+    user: {} as UserModel,
 });
 
 export function AuthProvider({
     children,
 }: JSX.ElementChildrenAttribute): ReactElement {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<UserModel | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -54,7 +54,7 @@ export function AuthProvider({
                     logout();
                     return;
                 }
-                const dtrUser = await httpClient.get<User>(AUTH_API.me, {
+                const dtrUser = await httpClient.get<UserModel>(AUTH_API.me, {
                     headers: await getAuthHeaders(),
                 });
                 setUser(dtrUser.data);
@@ -107,7 +107,7 @@ export function AuthProvider({
             login,
             logout,
             register,
-            user: user as User,
+            user: user as UserModel,
         };
     }, [user]);
 
