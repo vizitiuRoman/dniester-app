@@ -10,6 +10,19 @@ export const BOOKING_API = {
 
 export const SERVICE_API = {
     default: 'app/services',
+    favorites: 'app/services/favorites',
+};
+
+export const REVIEW_API = {
+    default: 'app/reviews',
+};
+
+export const STAFF_API = {
+    default: 'app/staffs',
+};
+
+export const BRANCH_API = {
+    default: 'app/branches',
 };
 
 export const COMPANY_API = {
