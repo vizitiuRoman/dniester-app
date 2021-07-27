@@ -13,6 +13,11 @@ export default {
                         ServicesScreen: 'services',
                     },
                 },
+                Service: {
+                    screens: {
+                        ServiceScreen: 'service',
+                    },
+                },
                 Settings: {
                     screens: {
                         Settings: {

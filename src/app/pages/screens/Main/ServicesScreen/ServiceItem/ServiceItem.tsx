@@ -1,27 +1,32 @@
 import React, { ReactElement } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native-ui-lib';
 
 import { COLORS, SIZES } from '@constants/theme';
+import { ServiceModel } from '@shared/models/service.model';
 
 type ServiceItemProps = {
-    label: string;
-    bgColor: string[];
+    item: ServiceModel;
+    onPress: () => void;
 };
 
-export default function ServiceItem({ label }: ServiceItemProps): ReactElement {
+export default function ServiceItem({
+    item,
+    onPress,
+}: ServiceItemProps): ReactElement {
     return (
-        <View style={styles.container}>
-            <View style={styles.innerContainer}>
-                <View style={styles.iconContainer}></View>
-            </View>
-            <Text style={styles.label}>{label}</Text>
-        </View>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
+            <Text style={styles.label}>{item.name}</Text>
+        </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
+        backgroundColor: 'red',
+        margin: 8,
+        padding: 12,
     },
     innerContainer: {
         shadowColor: '#000',

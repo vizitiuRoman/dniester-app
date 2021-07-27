@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import { RootStackParamList } from '@shared/types/types';
 import NotificationsScreen from '@screens/Main/NotificationsScreen/NotificationsScreen';
+import ServiceScreen from '@screens/Main/ServiceScreen/ServiceScreen';
 import ServicesScreen from '@screens/Main/ServicesScreen/ServicesScreen';
 import SettingsNavigator from '@navigations/SettingsNavigator';
 
@@ -39,6 +40,13 @@ export default function RootNavigator(): ReactElement {
                 component={ServicesScreen}
                 options={{
                     headerTitle: t('Services'),
+                }}
+            />
+            <Stack.Screen
+                name="Service"
+                component={ServiceScreen}
+                options={{
+                    headerTitle: t('Service'),
                 }}
             />
             <Stack.Screen

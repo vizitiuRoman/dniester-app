@@ -1,9 +1,11 @@
+import { ServiceModel } from '@shared/models/service.model';
 import { UserModel } from '@shared/models/user.model';
 
 export type RootStackParamList = {
     Notifications: undefined;
     Settings: undefined;
     Services: undefined;
+    Service: undefined;
 };
 
 export type AuthStackParamList = {
@@ -11,6 +13,13 @@ export type AuthStackParamList = {
     Login: undefined;
     Register: undefined;
     SelectLanguage: undefined;
+};
+
+export type ServicesStackParamList = {
+    Services: undefined;
+    Service: {
+        service: ServiceModel;
+    };
 };
 
 export type SettingsStackParamList = {

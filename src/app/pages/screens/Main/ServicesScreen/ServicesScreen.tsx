@@ -1,60 +1,26 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
+import { StackScreenProps } from '@react-navigation/stack';
 
-import { COLORS, SIZES } from '@constants/theme';
+import { COLORS } from '@constants/theme';
+import { ServiceModel } from '@shared/models/service.model';
+import { ServicesStackParamList } from '@shared/types/types';
 import ServiceItem from '@screens/Main/ServicesScreen/ServiceItem/ServiceItem';
-import useCompanyService from '@core/services/useCompanyService';
 import useServiceService from '@core/services/useServiceService';
 
-const optionsData = [
-    {
-        id: '1',
-        label: 'Flight',
-        bgColors: ['#46aeff', '#5884ff'],
-    },
-    {
-        id: '2',
-        label: 'Train',
-        bgColors: ['#fddf90', '#fcda13'],
-    },
-    {
-        id: '3',
-        label: 'Bus',
-        bgColors: ['#e973ad', '#da5df2'],
-    },
-    {
-        id: '4',
-        label: 'Taxi',
-        bgColors: ['#fcaba8', '#fe6bba'],
-    },
-    {
-        id: '5',
-        label: 'Hotel',
-        bgColors: ['#ffc465', '#ff9c5f'],
-    },
-    {
-        id: '6',
-        label: 'Eats',
-        bgColors: ['#7cf1fb', '#4ebefd'],
-    },
-    {
-        id: '7',
-        label: 'Adventure',
-        bgColors: ['#7be993', '#46caaf'],
-    },
-    {
-        id: '8',
-        label: 'Event',
-        bgColors: ['#fca397', '#fc7b6c'],
-    },
-];
+export default function ServicesScreen({
+    navigation,
+}: StackScreenProps<ServicesStackParamList, 'Services'>): ReactElement {
+    const [services, setServices] = useState<ServiceModel[]>([]);
 
-export default function ServicesScreen(): ReactElement {
     const { getServices } = useServiceService();
 
     useEffect(() => {
         async function getData(): Promise<void> {
-            const data = await getServices();
+            try {
+                const data = await getServices();
+                setServices(data);
+            } catch (e) {}
         }
         getData();
     }, []);
@@ -66,13 +32,17 @@ export default function ServicesScreen(): ReactElement {
             <View style={styles.categoryContainer}>
                 <FlatList
                     scrollEnabled={false}
-                    numColumns={4}
-                    data={optionsData}
-                    renderItem={(itemData) => (
+                    numColumns={3}
+                    data={services}
+                    renderItem={({ item }) => (
                         <ServiceItem
-                            key={itemData.item.id}
-                            bgColor={itemData.item.bgColors}
-                            label={itemData.item.label}
+                            key={item.id}
+                            item={item}
+                            onPress={() =>
+                                navigation.navigate('Service', {
+                                    service: item,
+                                })
+                            }
                         />
                     )}
                 />
@@ -86,26 +56,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.white,
     },
-    imageContainer: {
-        flex: 1,
-        alignItems: 'center',
-        height: '100%',
-    },
-    image: {
-        borderRadius: 15,
-        resizeMode: 'cover',
-    },
     categoryContainer: {
         flex: 1,
         alignItems: 'center',
-    },
-    destinationContainer: {
-        flex: 1,
-        padding: 20,
-    },
-    title: {
-        fontSize: SIZES.h2,
-        fontWeight: '700',
-        marginBottom: 10,
     },
 });
